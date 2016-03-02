@@ -1,4 +1,4 @@
-# XcodeBuild hanging reproduction sample
+# XcodeBuild delayed test outputs reproduction sample
 
 This is a fork of the awesome [https://github.com/ably/ably-ios](https://github.com/ably/ably-ios)
 project.
