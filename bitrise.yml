@@ -1,0 +1,22 @@
+---
+format_version: 1.1.0
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+app:
+  envs:
+  - BITRISE_PROJECT_PATH: ably.xcworkspace
+  - BITRISE_SCHEME: Ably
+
+workflows:
+  test:
+    steps:
+    - cocoapods-install@1.1.0: {}
+    - script@1.1.0:
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set -x
+
+            # real-time output:
+            # xcodebuild -workspace ably.xcworkspace -scheme Ably clean build test -destination 'platform=iOS Simulator,name=iPhone 4s,OS=latest'
+            # test outputs are only shown once the tests finish:
+            xcodebuild -workspace ably.xcworkspace -scheme Ably clean build test -destination 'platform=iOS Simulator,name=iPhone 4s,OS=latest' | tee /dev/null
